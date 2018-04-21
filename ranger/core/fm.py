@@ -93,7 +93,8 @@ class FM(Actions,  # pylint: disable=too-many-instance-attributes
             self.tabs[self.current_tab] = self.thistab = Tab('.')
 
         if not ranger.args.clean and os.path.isfile(self.confpath('rifle.conf')):
-            rifleconf = self.confpath('rifle.conf')
+            rifleconf = (self.confpath('rifle.conf'),
+                self.relpath('config/rifle.conf'))
         else:
             rifleconf = self.relpath('config/rifle.conf')
         self.rifle = Rifle(rifleconf)
