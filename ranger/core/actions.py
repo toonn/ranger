@@ -585,25 +585,32 @@ class Actions(  # pylint: disable=too-many-instance-attributes,too-many-public-m
         """enter the directory at the given path, remember=True"""
         self.enter_dir(path, remember=remember)
 
-    def traverse(self):
+    def traverse(self, reverse=False):
         self.change_mode('normal')
         tfile = self.thisfile
         cwd = self.thisdir
         if tfile is not None and tfile.is_directory:
             self.enter_dir(tfile.path)
-        elif cwd.pointer >= len(cwd) - 1:
-            while True:
-                self.move(left=1)
-                cwd = self.thisdir
-                if cwd.pointer < len(cwd) - 1:
-                    break
-                if cwd.path == '/':
-                    break
-            self.move(down=1)
-            self.traverse()
+            if reverse:
+                self.move(to=100, percentage=True)
+            else:
+                self.move(to=0)
         else:
-            self.move(down=1)
-            self.traverse()
+            if ((not reverse and cwd.pointer >= len(cwd) - 1)
+                 or (reverse and cwd.pointer == 0)):
+                while True:
+                    self.move(left=1)
+                    cwd = self.thisdir
+                    if ((not reverse and cwd.pointer < len(cwd) - 1)
+                        or (reverse and cwd.pointer > 0)):
+                        break
+                    if cwd.path == '/': # BUG
+                        break
+            if reverse:
+                self.move(up=1)
+            else:
+                self.move(down=1)
+            self.traverse(reverse=reverse)
 
     def traverse_backwards(self):
         self.change_mode('normal')
