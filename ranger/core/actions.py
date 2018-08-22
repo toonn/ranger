@@ -114,9 +114,9 @@ class Actions(  # pylint: disable=too-many-instance-attributes,too-many-public-m
             self, name, value):
         types = self.fm.settings.types_of(name)
         if bool in types:
-            if value.lower() in ('false', 'off', '0'):
+            if value.lower() in ('false', 'off', '0', 'no'):
                 return False
-            elif value.lower() in ('true', 'on', '1'):
+            elif value.lower() in ('true', 'on', '1', 'yes'):
                 return True
         if isinstance(None, types) and value.lower() == 'none':
             return None
