@@ -26,7 +26,7 @@ VERSION_MSG = [
 ]
 
 
-def main(
+def bain(
         # pylint: disable=too-many-locals,too-many-return-statements
         # pylint: disable=too-many-branches,too-many-statements
 ):
