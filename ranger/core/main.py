@@ -25,8 +25,7 @@ VERSION_MSG = [
     'Locale: {0}'.format('.'.join(str(s) for s in locale.getlocale())),
 ]
 
-
-def bain(
+def main(
         # pylint: disable=too-many-locals,too-many-return-statements
         # pylint: disable=too-many-branches,too-many-statements
 ):
