@@ -19,7 +19,8 @@ CONTEXT_KEYS = [
     'flat', 'marked', 'tagged', 'tag_marker', 'line_number',
     'cut', 'copied', 'frozen',
     'help_markup',  # COMPAT
-    'seperator', 'key', 'special', 'border',  # COMPAT
+    'border',
+    'separator', 'seperator', 'key', 'special',  # COMPAT
     'title', 'text', 'highlight', 'bars', 'quotes', 'tab', 'loaded',
     'keybuffer',
     'infostring',
